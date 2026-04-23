@@ -159,7 +159,7 @@ PYTHONPATH=. python -m training.run_pipeline --input-csv data/clv_realistic_5000
 
 # Run API
 PYTHONPATH=. uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-
+unicorn -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app
 # Frontend setup + run
 cd ../frontend
 npm install
